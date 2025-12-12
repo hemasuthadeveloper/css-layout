@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smartwatch Banner</title>
+<style>
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Georgia, serif;
+    background: #fff;
+}
+
+.context-section {
+    width: 100%;
+    padding: 40px 50px;
+}
+
+.context-title {
+    text-align: center;
+    font-size: 26px;
+    margin-bottom: 40px;
+    font-weight: bold;
+}
+
+.product-block {
+    display: flex;
+    align-items: center;
+    margin-bottom: 60px;
+}
+
+.watch-img {
+    width: 400px;
+    margin-right: -40px; /* overlaps the orange block slightly */
+}
+/* PERFECT FIGMA-STYLE POLYGON */
+.text-box {
+    background: #f98500;
+    color: white;
+    padding: 45px 60px;
+    width: 100%;
+    z-index: 1;
+
+    /* TRUE FIGMA POLYGON SHAPE (both sides pointed) */
+    clip-path: polygon(
+        10% 0,
+        100% 0,
+        100% 100%,
+        10% 100%,
+        0 50%
+    );
+}
+
+.text-box h2 {
+    font-size: 38px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.text-box p {
+    color: #000;
+    font-size: 22px;
+    line-height: 1.6;
+}
+
+</style>
+</head>
+<body>
+
+<section class="context-section">
+   <h2 class="context-title">Product In Context</h2>
+    <div class="product-block">
+        <img src="craiyon_130934_image 1.png" class="watch-img" alt="watch">
+
+        <div class="text-box">
+            <h2>Xiaomi Watch S3 1.43” AMOLED Smartwatch</h2>
+
+            <p>
+                Features a 1.43” AMOLED display with 600 nits brightness and
+                sharp 326 ppi, ideal for crisp visuals in outdoor lighting.<br>
+                Offers LTE connectivity, allowing for phone-free calls and data
+            </p>
+        </div>
+    </div>
+
+</section>
+
+</body>
+</html>

@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Company - Testimonials</title>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+         * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+           font-family: 'Inter', 'Inika', serif;
+            background: #fff;
+        }
+
+        /* ---------------- HEADER BG ---------------- */
+        .top-section {
+            background: #dba4fb;   /* EXACT FIGMA COLOR */
+            padding: 20px 40px;
+        }
+
+        /* ---------------- HEADER ---------------- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Left Logo + Title */
+        .left-part {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .left-part img {
+            width: 120px;        /* FIGMA EXACT SIZE */
+            height: 120px;
+            object-fit: contain;
+            margin-bottom: -32px;
+        }
+
+        .left-part h2 {
+            font-size: 22px;
+            font-weight: 700;
+        }
+
+        /* Search Bar */
+        .search-box {
+            width: 650px;    /* EXACT FIGMA WIDTH */
+            position: relative;
+            margin-left: 70px;
+            margin-top: -35px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 15px 45px 15px 18px;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            outline: none;
+        }
+
+        .search-box i {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 22px;
+            color: black;
+            cursor: pointer;
+        }
+
+        /* Right Icons + Register Button */
+        .right-part {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            font-size: 22px;
+            margin-top: -35px;
+          
+        }
+
+        .right-part i {
+            cursor: pointer;
+        }
+
+        .register-btn {
+            background: #1fb651;
+            color: white;
+            border: none;
+            padding: 13px 26px;
+            font-size: 18px;
+            font-weight: 700;
+            border-radius: 8px;
+            cursor: pointer;
+           
+           
+        }
+
+        /* ---------------- NAVBAR ---------------- */
+       nav {
+            display: flex;
+            justify-content: flex-end;
+            gap: 45px;
+            padding-top: -6px;
+            margin-right: 60px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #1e1b4b;
+            font-weight: 600;
+            font-size: 20px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #7c3aed;
+        }
+        /* ================= TESTIMONIAL SECTION ================= */
+        .testimonial-wrapper {
+            width: 850px;
+            margin: 150px auto;
+            
+        }
+
+        .card {
+            width: 100%;
+            display: flex;
+            background: #e2c5ff;
+            margin-bottom: 40px;
+            padding: 25px;
+            border-radius: 10px;
+            gap: 20px;
+        }
+
+        .card:nth-child(2) {
+            background: #ffc983;
+        }
+
+        .card:nth-child(3) {
+            background: #e4ffa0;
+        }
+
+        .card img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .card h2 {
+            font-size: 19px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .card p {
+            font-size: 25px;
+            line-height: 1.7;
+            color: #333;
+        }
+
+        /* ================= FOOTER ================= */
+        footer {
+    background: #e9ff5a;
+    padding: 70px 80px 40px;
+    position: relative; /* ADD THIS - needed for proper positioning */
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr 1fr 1fr;
+    gap: 60px;
+    align-items: flex-start;
+    margin-bottom: 18px; /* Space for social icons */
+}
+
+/* Logo + company */
+.footer-logo img {
+    width: 180px;
+    margin-top: -39px;
+}
+
+.footer-logo h2 {
+    margin-top: 20px;
+    font-size: 28px;
+    font-weight: 700;
+    color: #000;
+}
+
+/* Column Titles */
+.footer-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 25px;
+    font-family: 'Inika', serif;
+    margin-top: -30px;
+}
+
+/* Links */
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: #000;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+/* Contact Column */
+.col h4 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 25px;
+    margin-top: -30px;
+}
+
+.col p {
+    margin: 6px 0;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+
+.col p i {
+    margin-right: 8px;
+}
+
+/* FIXED SOCIAL ICONS - NO LONGER ABSOLUTE */
+.footer-social {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 30px;
+    padding-top: 30px;
+     /* Optional separator line */
+}
+
+.footer-social i {
+    
+    width: 45px;
+    height: 45px;
+     margin-left: 25px;
+    cursor: pointer;
+}
+
+.footer-social i:hover {
+    transform: scale(1.1);
+}
+/* media query */
+@media (max-width: 1024px) {
+
+    /* HEADER */
+    header {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .search-box {
+        width: 80%;
+        margin: 0;
+    }
+
+    nav {
+        justify-content: center;
+        margin-right: 0;
+    }
+
+    /* TESTIMONIAL SECTION */
+    .testimonial-wrapper {
+        width: 95%;
+        margin-top: 105px;
+    }
+
+    .card {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+    }
+
+    .card img {
+        width: 150px;
+        height: 150px;
+    }
+
+    /* FOOTER */
+    .footer-content {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 40px;
+    }
+}
+@media (max-width: 768px) {
+
+    /* HEADER */
+    .left-part img {
+        width: 90px;
+        height: 90px;
+    }
+
+    .right-part {
+        font-size: 18px;
+        gap: 15px;
+    }
+
+    .register-btn {
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+
+    nav {
+        gap: 25px;
+        font-size: 18px;
+    }
+
+    /* TESTIMONIALS */
+    .card h2 {
+        font-size: 20px;
+    }
+
+    .card p {
+        font-size: 16px;
+    }
+
+    /* FOOTER */
+    .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .footer-logo img {
+        width: 140px;
+    }
+
+    .footer-social {
+        justify-content: center;
+    }
+}
+@media (max-width: 600px) {
+
+    .top-section {
+        padding: 20px;
+    }
+
+    /* HEADER */
+    header {
+        text-align: center;
+    }
+
+    .search-box {
+        width: 100%;
+        margin: 20px 0;
+    }
+
+    nav {
+        flex-wrap: wrap;
+        gap: 18px;
+        justify-content: center;
+    }
+
+    nav a {
+        font-size: 18px;
+    }
+
+    /* TESTIMONIAL CARDS */
+    .card {
+        padding: 18px;
+    }
+
+    .card img {
+        width: 130px;
+        height: 130px;
+    }
+
+    /* FOOTER */
+    footer {
+        padding: 40px 30px;
+    }
+
+    .footer-title {
+        font-size: 20px;
+    }
+
+    .footer-links a {
+        font-size: 18px;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        text-align: center;
+    }
+
+    .footer-social {
+        justify-content: center;
+    }
+}
+@media (max-width: 425px) {
+
+    /* LOGO */
+    .left-part img {
+        width: 70px;
+        height: 70px;
+    }
+
+    /* SEARCH BAR */
+    .search-box input {
+        font-size: 16px;
+        padding: 12px 40px 12px 14px;
+    }
+
+    /* NAV */
+    nav a {
+        font-size: 16px;
+    }
+
+    /* TESTIMONIALS */
+    .card img {
+        width: 110px;
+        height: 110px;
+    }
+
+    .card h2 {
+        font-size: 18px;
+    }
+
+    .card p {
+        font-size: 14px;
+    }
+
+    /* FOOTER */
+    .footer-title {
+        font-size: 18px;
+    }
+
+    .footer-links a {
+        font-size: 16px;
+    }
+
+    .col h4 {
+        font-size: 20px;
+    }
+
+    .footer-logo img {
+        width: 120px;
+    }
+
+    .footer-social i {
+        font-size: 24px;
+        margin: 10px;
+    }
+}
+
+    </style>
+</head>
+<body>
+
+    <div class="top-section">
+
+    <!-- HEADER -->
+    <header>
+
+        <!-- Left -->
+        <div class="left-part">
+            <img src="logo.PNG" alt="Logo">
+        </div>
+
+        <!-- Search -->
+        <div class="search-box">
+            <input type="text" placeholder="Search For">
+            <i class="fa fa-search"></i>
+        </div>
+
+        <!-- Right -->
+        <div class="right-part">
+            <i class="fa fa-shopping-cart"></i>
+            <i class="fa fa-bell"></i>
+             <button class="register-btn" onclick="window.location.href='register.html'">Register</button>
+        </div>
+
+    </header>
+
+    <!-- NAV BAR -->
+     <nav>
+           <a href="home.html">Home</a>
+            <a href="About.html">About Us</a>
+            <a href="product.html">Product</a>
+            <a href="services.html">Service</a>
+            <a href="#contact">Contact</a>
+            <a href="blogs.html">Blogs</a>
+        </nav>
+
+</div>
+    <!-- ================= TESTIMONIAL CARDS ================= -->
+    <section class="testimonial-wrapper">
+
+        <div class="card">
+            <img src="girl image 1.png">
+            <div>
+                <h2>Amanda Faulkner (New Zealand)</h2>
+                <p>“My Apple Watch kept sending alerts that my resting heart rate was way higher than normal... I eventually decided to see my GP. That decision probably saved my life — it led to a diagnosis of acute myeloid leukemia.”</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="girl image 2.png">
+            <div>
+                <h2>Sneha Saha (Delhi, India)</h2>
+                <p>“If the Apple Watch had not alerted me of the serious condition around midnight, I would have lost my life.” Her atrial fibrillation—heart rate exceeding 230 bpm—was detected during a potentially fatal episode prompting emergency care.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="girl image 3.png">
+            <div>
+                <h2>Frank Haggerty (New Jersey, USA)</h2>
+                <p>“Quite frankly, had I not had the watch on, I wouldn’t be sitting here today. It’s my best friend.” His Apple Watch detected a resting heart rate of just 30 bpm, leading to a pacemaker implant for complete heart block.</p>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <footer>
+    <div class="footer-content">
+        <!-- Logo Column -->
+        <div class="footer-logo">
+            <img src="footer logo.PNG" alt="Logo">
+            <h2>Tech Company</h2>
+        </div>
+
+        <!-- Company -->
+        <div>
+            <h3 class="footer-title">Company</h3>
+            <div class="footer-links">
+                <a href="#">About US</a>
+                <a href="#">Services</a>
+                <a href="#">Community</a>
+                <a href="#">Testimonial</a>
+            </div>
+        </div>
+
+        <!-- Support -->
+        <div>
+            <h3 class="footer-title">Support</h3>
+            <div class="footer-links">
+                <a href="#">Help Center</a>
+                <a href="#">Webians</a>
+                <a href="#">Feedback</a>
+            </div>
+        </div>
+
+        <!-- Links -->
+        <div>
+            <h3 class="footer-title">Links</h3>
+            <div class="footer-links">
+                <a href="#">Course</a>
+                <a href="#">Service</a>
+                <a href="#">All in ond</a>
+            </div>
+        </div>
+
+        <!-- Contact -->
+        <div class="col">
+            <h4>Contact US</h4>
+            <p><i class="fa-solid fa-phone"></i> +917788978934</p>
+            <p><i class="fa-solid fa-envelope"></i> nazer2000@gmail</p>
+        </div>
+    </div>
+
+    <!-- SOCIAL ICONS - Now properly positioned -->
+    <div class="footer-social">
+        <i class="fa-brands fa-google"></i>
+        <i class="fa-brands fa-twitter"></i>
+        <i class="fa-brands fa-linkedin"></i>
+        <i class="fa-brands fa-facebook"></i>
+    </div>
+</footer>
+    
+</body>
+</html>

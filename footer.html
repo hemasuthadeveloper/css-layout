@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Footer Section</title>
+ <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Inter', 'Inika', serif;
+        background: #f0f0f0;
+    }
+
+    footer {
+        background: #e9ff5a;
+        padding: 70px 80px;
+        display: grid;
+        grid-template-columns: 1.2fr 1fr 1fr 1fr 1fr;
+        gap: 60px;
+        align-items: flex-start;
+    }
+
+    /* Logo + company */
+    .footer-logo img {
+        width: 180px;
+        margin-top: -39px;
+    }
+
+    .footer-logo h2 {
+        margin-top: 20px;
+        font-size: 28px;
+        font-weight: 700;
+        color: #000;
+    }
+
+    /* Column Titles */
+    .footer-title {
+        font-size: 24px;
+        font-weight: 700;
+        color: #000;
+        margin-bottom: 25px;
+        font-family: 'Inika', serif;
+        margin-top: -30px;
+    }
+
+    /* Links */
+    .footer-links {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .footer-links a {
+        text-decoration: none;
+        color: #000;
+        font-size: 20px;
+        font-weight: 500;
+    }
+
+    /* Contact */
+    .footer-columns {
+    width: 65%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.col h4 {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 12px;
+      margin-top: -30px;
+}
+
+.col p {
+    margin: 6px 0;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.col p i {
+    margin-right: 8px;
+}
+
+/* SOCIAL ICONS (BOTTOM RIGHT) */
+.footer-social {
+    position: absolute;
+    bottom: 300px;
+    right: 60px;
+    font-size: 22px;
+}
+
+.footer-social i {
+    margin-left: 25px;
+    cursor: pointer;
+}
+</style>
+</head>
+<body>
+
+<footer>
+    <!-- Logo Column -->
+    <div class="footer-logo">
+        <img src="footer logo.PNG" alt="Logo">
+        <h2>Tech Company</h2>
+    </div>
+
+    <!-- Company -->
+    <div>
+        <h3 class="footer-title">Company</h3>
+        <div class="footer-links">
+            <a href="#">About US</a>
+            <a href="#">Services</a>
+            <a href="#">Community</a>
+            <a href="#">Testimonial</a>
+        </div>
+    </div>
+
+    <!-- Support -->
+    <div>
+        <h3 class="footer-title">Support</h3>
+        <div class="footer-links">
+            <a href="#">Help Center</a>
+            <a href="#">Webians</a>
+            <a href="#">Feedback</a>
+        </div>
+    </div>
+
+    <!-- Links -->
+    <div>
+        <h3 class="footer-title">Links</h3>
+        <div class="footer-links">
+            <a href="#">Course</a>
+            <a href="#">Service</a>
+            <a href="#">All in ond</a>
+        </div>
+    </div>
+
+    <!-- Contact -->
+    <div class="col">
+            <h4>Contact US</h4>
+            <p><i class="fa-solid fa-phone"></i> +917788978934</p>
+            <p><i class="fa-solid fa-envelope"></i> nazer2000@gmail</p>
+        </div>
+
+    </div>
+
+    <!-- BOTTOM SOCIAL ICONS -->
+    <div class="footer-social">
+        <i class="fa-brands fa-google"></i>
+        <i class="fa-brands fa-twitter"></i>
+        <i class="fa-brands fa-linkedin"></i>
+        <i class="fa-brands fa-facebook"></i>
+    </div>
+
+</footer>
+
+</body>
+</html>

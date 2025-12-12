@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Company - Blogs</title>
+        <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+         * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+           font-family: 'Inter', 'Inika', serif;
+            background: #fff;
+        }
+
+        /* ---------------- HEADER BG ---------------- */
+        .top-section {
+            background: #dba4fb;   /* EXACT FIGMA COLOR */
+            padding: 20px 40px;
+        }
+
+        /* ---------------- HEADER ---------------- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Left Logo + Title */
+        .left-part {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .left-part img {
+            width: 120px;        /* FIGMA EXACT SIZE */
+            height: 120px;
+            object-fit: contain;
+            margin-bottom: -32px;
+        }
+
+        .left-part h2 {
+            font-size: 22px;
+            font-weight: 700;
+        }
+
+        /* Search Bar */
+        .search-box {
+            width: 650px;    /* EXACT FIGMA WIDTH */
+            position: relative;
+            margin-left: 70px;
+            margin-top: -35px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 15px 45px 15px 18px;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            outline: none;
+        }
+
+        .search-box i {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 22px;
+            color: black;
+            cursor: pointer;
+        }
+
+        /* Right Icons + Register Button */
+        .right-part {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            font-size: 22px;
+            margin-top: -35px;
+          
+        }
+
+        .right-part i {
+            cursor: pointer;
+        }
+
+        .register-btn {
+            background: #1fb651;
+            color: white;
+            border: none;
+            padding: 13px 26px;
+            font-size: 18px;
+            font-weight: 700;
+            border-radius: 8px;
+            cursor: pointer;
+           
+           
+        }
+
+        /* ---------------- NAVBAR ---------------- */
+       nav {
+            display: flex;
+            justify-content: flex-end;
+            gap: 45px;
+            padding-top: -6px;
+            margin-right: 60px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #1e1b4b;
+            font-weight: 600;
+            font-size: 20px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #7c3aed;
+        }
+
+        /* Main Content */
+        main {
+            padding: 60px 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 56px;
+            font-weight: bold;
+            margin-bottom: 50px;
+            color: #000;
+            font-family: Georgia, serif;
+        }
+
+        /* Blog Cards */
+        .blogs-container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .blog-card {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            padding: 8px;
+            border-radius: 20px;
+            background-color: #5eead4;
+        }
+
+        .blog-image-circle {
+            width: 275px;
+            height: 288px;
+            border-radius: 50%;
+            overflow: hidden;
+            flex-shrink: 0;
+            background-color: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .blog-image-circle img {
+            width: 100%;
+            height: 200%;
+            object-fit: cover;
+            border-radius: 20px;
+            
+        }
+
+        .blog-content {
+            flex: 1;
+        }
+
+        .blog-content h2 {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #000;
+            font-family: Georgia, serif;
+            text-align: center;
+        }
+
+        .blog-content p {
+            font-size: 20px;
+            /* line-height: 1.8; */
+            /* color: #000; */
+            color: white;
+        }
+
+        .blog-content ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .blog-content li {
+            font-size: 14px;
+            line-height: 1.8;
+            color: #000;
+            margin-bottom: 5px;
+        }
+
+        .blog-content strong {
+            font-weight: bold;
+        }
+
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+            gap: 10px;
+        }
+
+        .page-btn {
+            padding: 8px 15px;
+            background-color: #9ca3af;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            color: #fff;
+        }
+
+        .page-btn.active {
+            background-color: #6b7280;
+        }
+        /* Footer Icons */
+         footer {
+    background: #e9ff5a;
+    padding: 70px 80px 40px;
+    position: relative; /* ADD THIS - needed for proper positioning */
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr 1fr 1fr;
+    gap: 60px;
+    align-items: flex-start;
+    margin-bottom: 18px; /* Space for social icons */
+}
+
+/* Logo + company */
+.footer-logo img {
+    width: 180px;
+    margin-top: -39px;
+}
+
+.footer-logo h2 {
+    margin-top: 20px;
+    font-size: 28px;
+    font-weight: 700;
+    color: #000;
+}
+
+/* Column Titles */
+.footer-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 25px;
+    font-family: 'Inika', serif;
+    margin-top: -30px;
+}
+
+/* Links */
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: #000;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+/* Contact Column */
+.col h4 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 25px;
+    margin-top: -30px;
+}
+
+.col p {
+    margin: 6px 0;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+
+.col p i {
+    margin-right: 8px;
+}
+
+/* FIXED SOCIAL ICONS - NO LONGER ABSOLUTE */
+.footer-social {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 30px;
+    padding-top: 30px;
+     /* Optional separator line */
+}
+
+.footer-social i {
+    
+    width: 45px;
+    height: 45px;
+     margin-left: 25px;
+    cursor: pointer;
+}
+
+.footer-social i:hover {
+    transform: scale(1.1);
+}
+/* media query */
+/* =========================================================
+   📌 MEDIA QUERY – FOR ALL SCREEN SIZES
+   ========================================================= */
+
+/* ---------- 1024px : Small Laptop / Large Tablet ---------- */
+@media (max-width: 1024px) {
+
+    .search-box {
+        width: 450px;
+        margin-left: 20px;
+    }
+
+    nav {
+        margin-right: 20px;
+        gap: 25px;
+    }
+
+    .blog-card {
+        gap: 25px;
+    }
+
+    .blog-image-circle {
+        width: 220px;
+        height: 230px;
+    }
+
+    footer {
+        padding: 50px;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+/* ---------- 768px : Tablets ---------- */
+@media (max-width: 768px) {
+
+    /* Header becomes vertical */
+    header {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+
+    .left-part img {
+        width: 90px;
+        height: 90px;
+    }
+
+    .search-box {
+        width: 100%;
+        margin-left: 0;
+        margin-top: 0;
+    }
+
+    .right-part {
+        margin-top: 0;
+        justify-content: center;
+    }
+
+    /* Navbar becomes centered */
+    nav {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 20px;
+        margin: 20px 0;
+    }
+
+    /* Blogs change to vertical */
+    .blog-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .blog-image-circle {
+        width: 200px;
+        height: 210px;
+    }
+
+    .blog-content p {
+        font-size: 18px;
+    }
+
+    /* Footer grid reduces */
+    .footer-content {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+    }
+
+    .footer-social {
+        justify-content: center;
+    }
+}
+
+/* ---------- 480px : Mobile ---------- */
+@media (max-width: 480px) {
+
+    .top-section {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 34px;
+        text-align: center;
+    }
+
+    .search-box input {
+        font-size: 16px;
+        padding: 12px 40px 12px 15px;
+    }
+
+    nav a {
+        font-size: 16px;
+        padding: 5px 0;
+    }
+
+    .blog-card {
+        padding: 15px;
+        border-radius: 15px;
+    }
+
+    .blog-image-circle {
+        width: 170px;
+        height: 180px;
+    }
+
+    .blog-content h2 {
+        font-size: 20px;
+    }
+
+    .blog-content p {
+        font-size: 16px;
+    }
+
+    /* Footer full column */
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .footer-logo img {
+        margin: 0 auto;
+    }
+
+    .footer-social {
+        margin-top: 20px;
+        justify-content: center;
+    }
+
+    .footer-social i {
+        margin-left: 15px;
+    }
+}
+
+     
+
+    </style>
+</head>
+<body>
+   
+    <div class="top-section">
+
+    <!-- HEADER -->
+    <header>
+
+        <!-- Left -->
+        <div class="left-part">
+            <img src="logo.PNG" alt="Logo">
+        </div>
+
+        <!-- Search -->
+        <div class="search-box">
+            <input type="text" placeholder="Search For">
+            <i class="fa fa-search"></i>
+        </div>
+
+        <!-- Right -->
+        <div class="right-part">
+            <i class="fa fa-shopping-cart"></i>
+            <i class="fa fa-bell"></i>
+            <button class="register-btn" onclick="window.location.href='register.html'">Register</button>
+        </div>
+
+    </header>
+
+    <!-- NAV BAR -->
+     <nav>
+           <a href="home.html">Home</a>
+            <a href="About.html">About Us</a>
+            <a href="product.html">Product</a>
+            <a href="services.html">Service</a>
+            <a href="#contact">Contact</a>
+            <a href="blogs.html">Blogs</a>
+        </nav>
+
+</div>
+    <main>
+        <h1>Blogs</h1>
+
+        <div class="blogs-container">
+            <!-- Blog 1: Hardware Meets Elegance -->
+            <div class="blog-card">
+                <div class="blog-image-circle">
+                    <img src="blog image 1.png" alt="Smartphone">
+                </div>
+                <div class="blog-content">
+                    <h2>Hardware Meets Elegance</h2>
+                    <p><strong>Performance:</strong> Powered by the Snapdragon 8 Elite backed with up to 16GB of RAM and 1TB of storage, the foldable offers flagship-level performance</p>
+                    <p><strong>Displays:</strong> A vibrant 7-inch tablet main screen refreshes at 165Hz, while a 6.5-inch cover screen offers quick access to apps</p>
+                    <p><strong>Design:</strong> Minimalist, aluminum build performance as a stunning hinge-enclosing design. It's luxe yet durable feat. Plus, its IPX8 rated for water and dust resistance</p>
+                </div>
+            </div>
+
+            <!-- Blog 2: Smart Features Go Mainstream -->
+            <div class="blog-card">
+                <div class="blog-image-circle">
+                    <img src="blog image 2.png" alt="AI Technology">
+                </div>
+                <div class="blog-content">
+                    <h2>Smart Features Go Mainstream</h2>
+                    <p>Historically niche or Ultra with powerful AI features. Moto AI, Google Gemini, Meta AI, and AI-powered Perplexity tools are onboard, delivering features like Look & Talk, image Erasing and lifestyle chats</p>
+                </div>
+            </div>
+
+            <!-- Blog 3: Camera That Sees Clearly -->
+            <div class="blog-card">
+                <div class="blog-image-circle">
+                    <img src="craiyon_130934_image 1.png" alt="Camera">
+                </div>
+                <div class="blog-content">
+                    <h2>Camera That Sees Clearly</h2>
+                    <p>The camera setup includes three 50 MP lenses, fine-tuned with Pantone color accuracy. AI-enhanced modes—like Group Shot and Action Shot—add versatility to your photography toolkit.</p>
+                </div>
+            </div>
+
+            <!-- Blog 4: Power & Privilege -->
+            <div class="blog-card">
+                <div class="blog-image-circle">
+                    <img src="blog image 4.png" alt="AI Hand">
+                </div>
+                <div class="blog-content">
+                    <h2>Power & Privilege</h2>
+                    <p><strong>Charging:</strong> Fast charging is supported—68W wired and 30W wireless—but curiously, the charger isn't included.</p>
+                    <p><strong>Support:</strong> Software support is modest: just three years of updates, which lags behind industry leaders.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+     <footer>
+    <div class="footer-content">
+        <!-- Logo Column -->
+        <div class="footer-logo">
+            <img src="footer logo.PNG" alt="Logo">
+            <h2>Tech Company</h2>
+        </div>
+
+        <!-- Company -->
+        <div>
+            <h3 class="footer-title">Company</h3>
+            <div class="footer-links">
+                <a href="#">About US</a>
+                <a href="#">Services</a>
+                <a href="#">Community</a>
+                <a href="#">Testimonial</a>
+            </div>
+        </div>
+
+        <!-- Support -->
+        <div>
+            <h3 class="footer-title">Support</h3>
+            <div class="footer-links">
+                <a href="#">Help Center</a>
+                <a href="#">Webians</a>
+                <a href="#">Feedback</a>
+            </div>
+        </div>
+
+        <!-- Links -->
+        <div>
+            <h3 class="footer-title">Links</h3>
+            <div class="footer-links">
+                <a href="#">Course</a>
+                <a href="#">Service</a>
+                <a href="#">All in ond</a>
+            </div>
+        </div>
+
+        <!-- Contact -->
+        <div class="col">
+            <h4>Contact US</h4>
+            <p><i class="fa-solid fa-phone"></i> +917788978934</p>
+            <p><i class="fa-solid fa-envelope"></i> nazer2000@gmail</p>
+        </div>
+    </div>
+
+    <!-- SOCIAL ICONS - Now properly positioned -->
+    <div class="footer-social">
+        <i class="fa-brands fa-google"></i>
+        <i class="fa-brands fa-twitter"></i>
+        <i class="fa-brands fa-linkedin"></i>
+        <i class="fa-brands fa-facebook"></i>
+    </div>
+</footer>
+</body>
+</html>
