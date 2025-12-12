@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+body {
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Slide out to left when leaving the page */
+body.slide-out {
+    transform: translateX(-100%);
+    transition: transform 0.6s ease-in-out;
+}
+
+/* Slide in from right when loading a new page */
+body.slide-in {
+    transform: translateX(100%);
+    transition: transform 0.6s ease-in-out;
+}
+
+    
+</body>
+</html>

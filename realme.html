@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Realme Products</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+          * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+           font-family: 'Inter', 'Inika', serif;
+            background: #fff;
+        }
+
+        /* ---------------- HEADER BG ---------------- */
+        .top-section {
+            background: #dba4fb;   /* EXACT FIGMA COLOR */
+            padding: 20px 40px;
+        }
+
+        /* ---------------- HEADER ---------------- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Left Logo + Title */
+        .left-part {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .left-part img {
+            width: 120px;        /* FIGMA EXACT SIZE */
+            height: 120px;
+            object-fit: contain;
+            margin-bottom: -32px;
+        }
+
+        .left-part h2 {
+            font-size: 22px;
+            font-weight: 700;
+        }
+
+        /* Search Bar */
+        .search-box {
+            width: 650px;    /* EXACT FIGMA WIDTH */
+            position: relative;
+            margin-left: 70px;
+            margin-top: -35px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 15px 45px 15px 18px;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            outline: none;
+        }
+
+        .search-box i {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 22px;
+            color: black;
+            cursor: pointer;
+        }
+
+        /* Right Icons + Register Button */
+        .right-part {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            font-size: 22px;
+            margin-top: -35px;
+          
+        }
+
+        .right-part i {
+            cursor: pointer;
+        }
+
+        .register-btn {
+            background: #1fb651;
+            color: white;
+            border: none;
+            padding: 13px 26px;
+            font-size: 18px;
+            font-weight: 700;
+            border-radius: 8px;
+            cursor: pointer;
+           
+           
+        }
+
+        /* ---------------- NAVBAR ---------------- */
+       nav {
+            display: flex;
+            justify-content: flex-end;
+            gap: 45px;
+            padding-top: -6px;
+            margin-right: 60px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #1e1b4b;
+            font-weight: 600;
+            font-size: 20px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #7c3aed;
+        }
+
+        .container{
+            margin: 40px;
+            max-width: 1400px;
+            margin-left: 50px;
+            margin-right: auto;
+              margin: 98px 0;
+              margin-left: 62px;
+              margin-right: 89px;
+        }
+
+        .container h1 {
+            font-size: 36px;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+
+        /* Products Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        .product-card {
+            width: 100%;
+            background: #d9d9d9;
+            border-radius: 15px;
+            padding: 15px;
+            box-shadow: 0px 10px 20px rgba(0,0,0,0.15);
+            font-family: Arial, sans-serif;
+            margin-top: 30px;
+        }
+
+        .product-card .product-image {
+            position: relative;
+        }
+
+        .product-card img {
+            width: 100%;
+            border-radius: 12px;
+        }
+
+        .icon {
+            position: absolute;
+            top: 10px;
+            padding: 6px 8px;
+            border-radius: 50%;
+            background: #fff;
+            font-size: 14px;
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+
+        .cart { 
+            right: 50px; 
+        }
+
+        .share { 
+            right: 10px; 
+        }
+
+        .product-card h3 {
+            margin: 10px 0 3px;
+            font-size: 13px;
+            margin-top: -2px;
+            margin-left: -4px;
+        }
+
+        .product-card .price {
+            font-size: 22px;
+            font-weight: bold;
+           padding-top: 10px;
+        }
+
+        .color-row {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            margin-top: 15px;
+        }
+
+        .color {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 1px solid rgba(0,0,0,0.2);
+        }
+
+        .add-btn {
+            background: #ffdd00;
+            border: none;
+            padding: 8px 18px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 14px;
+            margin-left: auto;
+            margin-top: -16px;
+        }
+        /* Footer */
+        /* ================= FOOTER ================= */
+        footer {
+    background: #e9ff5a;
+    padding: 70px 80px 40px;
+    position: relative; /* ADD THIS - needed for proper positioning */
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr 1fr 1fr;
+    gap: 60px;
+    align-items: flex-start;
+    margin-bottom: 18px; /* Space for social icons */
+}
+
+/* Logo + company */
+.footer-logo img {
+    width: 180px;
+    margin-top: -39px;
+}
+
+.footer-logo h2 {
+    margin-top: 20px;
+    font-size: 28px;
+    font-weight: 700;
+    color: #000;
+}
+
+/* Column Titles */
+.footer-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 25px;
+    font-family: 'Inika', serif;
+    margin-top: -30px;
+}
+
+/* Links */
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: #000;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+/* Contact Column */
+.col h4 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 25px;
+    margin-top: -30px;
+}
+
+.col p {
+    margin: 6px 0;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+
+.col p i {
+    margin-right: 8px;
+}
+
+/* FIXED SOCIAL ICONS - NO LONGER ABSOLUTE */
+.footer-social {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 30px;
+    padding-top: 30px;
+     /* Optional separator line */
+}
+
+.footer-social i {
+    
+    width: 45px;
+    height: 45px;
+     margin-left: 25px;
+    cursor: pointer;
+}
+
+.footer-social i:hover {
+    transform: scale(1.1);
+}
+/* media query */
+/* -------------------------------------------------------
+   📌 1024px (LAPTOP / SMALL DESKTOP)
+------------------------------------------------------- */
+@media (max-width: 1024px) {
+
+    header {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+
+    .search-box {
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    nav {
+        justify-content: center;
+        margin: 20px 0;
+    }
+
+    .products-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 25px;
+    }
+
+    footer {
+        padding: 60px 50px;
+    }
+
+    .footer-content {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 40px;
+    }
+}
+
+
+
+/* -------------------------------------------------------
+   📌 768px (TABLET)
+------------------------------------------------------- */
+@media (max-width: 768px) {
+
+    /* HEADER STACK */
+    header {
+        flex-direction: column;
+        gap: 22px;
+        text-align: center;
+    }
+
+    .left-part img {
+        width: 90px;
+        height: 90px;
+        margin-bottom: 0;
+    }
+
+    .search-box {
+        width: 90%;
+        margin-left: 0;
+        margin-top: 0;
+    }
+
+    .right-part {
+        margin-top: 0;
+        justify-content: center;
+    }
+
+    /* NAVBAR */
+    nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        margin-right: 0;
+        padding: 10px 0;
+    }
+
+    nav a {
+        font-size: 18px;
+    }
+
+    /* TITLE */
+    .container h1 {
+        text-align: center;
+    }
+
+    /* GRID – 4 → 2 columns */
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+        padding: 10px;
+    }
+
+    .product-card {
+        padding: 12px;
+    }
+
+    .product-card img {
+        width: 100%;
+    }
+
+    /* FOOTER: 5 → 2 columns */
+    .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 35px;
+        text-align: center;
+    }
+
+    .footer-logo img {
+        margin: auto;
+    }
+
+    .footer-social {
+        justify-content: center;
+        margin-top: 20px;
+    }
+}
+
+
+
+/* -------------------------------------------------------
+   📌 480px (MOBILE)
+------------------------------------------------------- */
+@media (max-width: 480px) {
+
+    /* Header */
+    .left-part img {
+        width: 70px;
+        height: 70px;
+    }
+
+    .register-btn {
+        padding: 10px 20px;
+        font-size: 15px;
+    }
+
+    .search-box {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    nav a {
+        font-size: 16px;
+    }
+
+    /* Title */
+    .container h1 {
+        font-size: 26px;
+        margin-bottom: 20px;
+    }
+
+    /* GRID – 2 → 1 column */
+    .products-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .product-card {
+        padding: 15px;
+        width: 100%;
+    }
+
+    .product-image img {
+        width: 80%;
+        margin: auto;
+        display: block;
+    }
+
+    .product-name,
+    .price {
+        font-size: 18px;
+    }
+
+    .add-btn {
+        padding: 8px 14px;
+        font-size: 14px;
+    }
+
+    /* Footer: 2 → 1 column */
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        text-align: center;
+    }
+
+    .footer-title,
+    .col h4 {
+        font-size: 20px;
+    }
+
+    .footer-links a {
+        font-size: 16px;
+    }
+
+    .footer-social {
+        justify-content: center;
+        gap: 15px;
+        padding-top: 20px;
+    }
+
+    .footer-social i {
+        font-size: 26px;
+        margin-left: 0;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <div class="top-section">
+
+    <!-- HEADER -->
+    <header>
+
+        <!-- Left -->
+        <div class="left-part">
+            <img src="logo.PNG" alt="Logo">
+        </div>
+
+        <!-- Search -->
+        <div class="search-box">
+            <input type="text" placeholder="Search For">
+            <i class="fa fa-search"></i>
+        </div>
+
+        <!-- Right -->
+        <div class="right-part">
+            <i class="fa fa-shopping-cart"></i>
+            <i class="fa fa-bell"></i>
+            <button class="register-btn">Register</button>
+        </div>
+
+    </header>
+
+    <!-- NAV BAR -->
+     <nav>
+            <a href="home.html">Home</a>
+            <a href="About.html">About Us</a>
+            <a href="product.html">Product</a>
+            <a href="services.html">Service</a>
+            <a href="#contact">Contact</a>
+            <a href="blogs.html">Blogs</a>
+        </nav>
+
+    </div>
+
+    <div class="container">
+        <h1>Realme</h1>
+        
+        <!-- Products Grid -->
+        <div class="products-grid">
+
+            <!-- ROW 1 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="realme 1.png"Realme C73">
+                
+                </div>
+                <h3>Realme C73</h3>
+                <p class="price">$14000</p>
+                <div class="color-row">
+                    <span class="color c1" style="background:#6F584C;"></span>
+                    <span class="color c2" style="background:#549D94;"></span>
+                    <span class="color c3" style="background:#A4DCE2;"></span>
+                    <button class="add-btn">Add To Card</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="realme 2.png" alt="Realme C73">
+
+                </div>
+                <h3>Realme Narzo 80</h3>
+                <p class="price">$9000</p>
+                <div class="color-row">
+                    <span class="color c1" style="background:#6F584C;"></span>
+                    <span class="color c2" style="background:#A4DCE2;"></span>
+                    <span class="color c3" style="background:#bdc3c7;"></span>
+                    <button class="add-btn">Add To Card</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="realme 3.png" alt="Realme C73">
+                </div>
+                <h3>Realme Narzo 80X</h3>
+                <p class="price">$14000</p>
+                <div class="color-row">
+                    <span class="color c1" style="background:#3B3B3D;"></span>
+                    <span class="color c2" style="background:#4671A3;"></span>
+                    <span class="color c3" style="background:#C6C6C6;"></span>
+                    <button class="add-btn">Add To Card</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="realme 4.png" alt="Realme C73">
+                </div>
+                <h3>Narzo 80 Pro</h3>
+                <p class="price">$22000</p>
+                <div class="color-row">
+                    <span class="color c1" style="background:#e74c3c;"></span>
+                    <span class="color c2" style="background:#3498db;"></span>
+                    <span class="color c3" style="background:#E0E0E0;"></span>
+                    <button class="add-btn">Add To Card</button>
+                </div>
+            </div>
+
+            <!-- ROW 2 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="realme 5.png" alt="Realme C73">
+                </div>
+                <h3>Realme P3</h3>
+                <p class="price">$16500</p>
+                <div class="color-row">
+                    <span class="color c1" style="background:#25588C;"></span>
+                    <span class="color c2" style="background:#3B8A9D;"></span>
+                    <span class="color c3" style="background:#B1BFC3;"></span>
+                    <button class="add-btn">Add To Card</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="realme 6.png" alt="Realme C73">
+
+                </div>
+                <h3>Realme PI</h3>
+                <p class="price">$17000</p>
+                <div class="color-row">
+                    <span class="color c1" style="background:#4A4A4A;"></span>
+                    <span class="color c2" style="background:#39A197;"></span>
+                    <span class="color c3" style="background:#AEE5ED;"></span>
+                    <button class="add-btn">Add To Card</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="realme 7.png" alt="Realme C73">
+                </div>
+                <h3>Realme 15 Pro</h3>
+                <p class="price">$34000</p>
+                <div class="color-row">
+                    <span class="color c1" style="background:#4A4A4A;"></span>
+                    <span class="color c2" style="background:#39A197;"></span>
+                    <span class="color c3" style="background:#AEE5ED;"></span>
+                    <button class="add-btn">Add To Card</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="realme 8.png" alt="Realme C73">
+                    <div class="icon cart"><i class="fa-solid fa-cart-shopping"></i></div>
+                    <div class="icon share"><i class="fa-solid fa-share-nodes"></i></div>
+                </div>
+                <h3>Narzo 70</h3>
+                <p class="price">$17000</p>
+                <div class="color-row">
+                    <span class="color c1" style="background:#473729;"></span>
+                    <span class="color c2" style="background:#39A197;"></span>
+                    <span class="color c3" style="background:#F1A748;"></span>
+                    <button class="add-btn">Add To Card</button>
+                </div>
+            </div>
+
+            <!-- ROW 3 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="realme 9.png" alt="Realme C73">
+                </div>
+                <h3>Realme GT7 Pro</h3>
+                <p class="price">$46500</p>
+                <div class="color-row">
+                    <span class="color c1" style="background:#ED8A55;"></span>
+                    <span class="color c2" style="background:#3B8A9D;"></span>
+                    <span class="color c3" style="background:#A7A8A9;"></span>
+                    <button class="add-btn">Add To Card</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="realme 10.png" alt="Realme C73">
+                </div>
+                <h3>Realme 14X</h3>
+                <p class="price">$28000</p>
+                <div class="color-row">
+                    <span class="color c1" style="background:#942547;"></span>
+                    <span class="color c2" style="background:#3B8A9D;"></span>
+                    <span class="color c3" style="background:#A7A8A9;"></span>
+                    <button class="add-btn">Add To Card</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="realme 11.png" alt="Realme C73">
+                </div>
+                <h3>Realme Gt 6T</h3>
+                <p class="price">$28000</p>
+                <div class="color-row">
+                    <span class="color c1" style="background:#887AA7;"></span>
+                    <span class="color c2" style="background:#3B8A9D;"></span>
+                    <span class="color c3" style="background:#A7A8A9;"></span>
+                    <button class="add-btn">Add To Card</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="realme 12.png" alt="Realme C73">
+                </div>
+                <h3>Realme P3X</h3>
+                <p class="price">$13000</p>
+                <div class="color-row">
+                    <span class="color c1" style="background:#F4D1B8;"></span>
+                    <span class="color c2" style="background:#3B8A9D;"></span>
+                    <span class="color c3" style="background:#A7A8A9;"></span>
+                    <button class="add-btn">Add To Card</button>
+                </div>
+            </div>
+
+            <!-- ROW 4 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="realme 13.png" alt="Realme C73">
+                </div>
+                <h3>Realme GT6</h3>
+                <p class="price">$30000</p>
+                <div class="color-row">
+                    <span class="color c1" style="background:#e74c3c;"></span>
+                    <span class="color c2" style="background:#3498db;"></span>
+                    <span class="color c3" style="background:#bdc3c7;"></span>
+                    <button class="add-btn">Add To Card</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="realme 14.png" alt="Realme C73">
+                </div>
+                <h3>Realme C71</h3>
+                <p class="price">$11000</p>
+                <div class="color-row">
+                    <span class="color c1" style="background:#e74c3c;"></span>
+                    <span class="color c2" style="background:#3498db;"></span>
+                    <span class="color c3" style="background:#bdc3c7;"></span>
+                    <button class="add-btn">Add To Card</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="realme 15.png" alt="Realme C73">
+                </div>
+                <h3>Realme GT 7T</h3>
+                <p class="price">$34999</p>
+                <div class="color-row">
+                    <span class="color c1" style="background:#e74c3c;"></span>
+                    <span class="color c2" style="background:#3498db;"></span>
+                    <span class="color c3" style="background:#bdc3c7;"></span>
+                    <button class="add-btn">Add To Card</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="realme 16.png" alt="Realme C73">
+                </div>
+                <h3>Realme C73</h3>
+                <p class="price">$35990</p>
+                <div class="color-row">
+                    <span class="color c1" style="background:#e74c3c;"></span>
+                    <span class="color c2" style="background:#3498db;"></span>
+                    <span class="color c3" style="background:#bdc3c7;"></span>
+                    <button class="add-btn">Add To Card</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+     <!-- ================= FOOTER ================= -->
+    <footer>
+    <div class="footer-content">
+        <!-- Logo Column -->
+        <div class="footer-logo">
+            <img src="footer logo.PNG" alt="Logo">
+            <h2>Tech Company</h2>
+        </div>
+
+        <!-- Company -->
+        <div>
+            <h3 class="footer-title">Company</h3>
+            <div class="footer-links">
+                <a href="#">About US</a>
+                <a href="#">Services</a>
+                <a href="#">Community</a>
+                <a href="#">Testimonial</a>
+            </div>
+        </div>
+
+        <!-- Support -->
+        <div>
+            <h3 class="footer-title">Support</h3>
+            <div class="footer-links">
+                <a href="#">Help Center</a>
+                <a href="#">Webians</a>
+                <a href="#">Feedback</a>
+            </div>
+        </div>
+
+        <!-- Links -->
+        <div>
+            <h3 class="footer-title">Links</h3>
+            <div class="footer-links">
+                <a href="#">Course</a>
+                <a href="#">Service</a>
+                <a href="#">All in ond</a>
+            </div>
+        </div>
+
+        <!-- Contact -->
+        <div class="col">
+            <h4>Contact US</h4>
+            <p><i class="fa-solid fa-phone"></i> +917788978934</p>
+            <p><i class="fa-solid fa-envelope"></i> nazer2000@gmail</p>
+        </div>
+    </div>
+
+    <!-- SOCIAL ICONS - Now properly positioned -->
+    <div class="footer-social">
+        <i class="fa-brands fa-google"></i>
+        <i class="fa-brands fa-twitter"></i>
+        <i class="fa-brands fa-linkedin"></i>
+        <i class="fa-brands fa-facebook"></i>
+    </div>
+</footer>
+
+</body>
+</html>

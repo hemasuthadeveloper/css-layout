@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+           font-family: 'Inter', 'Inika', serif;
+            background: #fff;
+        }
+
+        /* ---------------- HEADER BG ---------------- */
+        .top-section {
+            background: #dba4fb;   /* EXACT FIGMA COLOR */
+            padding: 20px 40px;
+        }
+
+        /* ---------------- HEADER ---------------- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Left Logo + Title */
+        .left-part {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .left-part img {
+            width: 120px;        /* FIGMA EXACT SIZE */
+            height: 120px;
+            object-fit: contain;
+            margin-bottom: -32px;
+        }
+
+        .left-part h2 {
+            font-size: 22px;
+            font-weight: 700;
+        }
+
+        /* Search Bar */
+        .search-box {
+            width: 650px;    /* EXACT FIGMA WIDTH */
+            position: relative;
+            margin-left: 70px;
+            margin-top: -35px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 15px 45px 15px 18px;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            outline: none;
+        }
+
+        .search-box i {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 22px;
+            color: black;
+            cursor: pointer;
+        }
+
+        /* Right Icons + Register Button */
+        .right-part {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            font-size: 22px;
+            margin-top: -35px;
+          
+        }
+
+        .right-part i {
+            cursor: pointer;
+        }
+
+        .register-btn {
+            background: #1fb651;
+            color: white;
+            border: none;
+            padding: 13px 26px;
+            font-size: 18px;
+            font-weight: 700;
+            border-radius: 8px;
+            cursor: pointer;
+           
+           
+        }
+
+        /* ---------------- NAVBAR ---------------- */
+       nav {
+            display: flex;
+            justify-content: flex-end;
+            gap: 45px;
+            padding-top: -6px;
+            margin-right: 60px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #1e1b4b;
+            font-weight: 600;
+            font-size: 20px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #7c3aed;
+        }
+        main {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .form-container {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 450px;
+        }
+
+        .form-container h2 {
+            color: #333;
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 26px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: 500;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 5px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: auto;
+            margin-right: 8px;
+        }
+
+        .checkbox-group label {
+            margin-bottom: 0;
+            font-weight: normal;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 20px;
+            color: #666;
+        }
+
+        .login-link a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+    background: #e9ff5a;
+    padding: 70px 80px 40px;
+    position: relative; /* ADD THIS - needed for proper positioning */
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr 1fr 1fr;
+    gap: 60px;
+    align-items: flex-start;
+    margin-bottom: 18px; /* Space for social icons */
+}
+
+/* Logo + company */
+.footer-logo img {
+    width: 180px;
+    margin-top: -39px;
+}
+
+.footer-logo h2 {
+    margin-top: 20px;
+    font-size: 28px;
+    font-weight: 700;
+    color: #000;
+}
+
+/* Column Titles */
+.footer-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 25px;
+    font-family: 'Inika', serif;
+    margin-top: -30px;
+}
+
+/* Links */
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: #000;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+/* Contact Column */
+.col h4 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 25px;
+    margin-top: -30px;
+}
+
+.col p {
+    margin: 6px 0;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+
+.col p i {
+    margin-right: 8px;
+}
+
+/* FIXED SOCIAL ICONS - NO LONGER ABSOLUTE */
+.footer-social {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 30px;
+    padding-top: 30px;
+     /* Optional separator line */
+}
+
+.footer-social i {
+    
+    width: 45px;
+    height: 45px;
+     margin-left: 25px;
+    cursor: pointer;
+}
+
+.footer-social i:hover {
+    transform: scale(1.1);
+}
+/* media query */
+/* ================= MEDIA QUERIES ================= */
+
+/* ================= MEDIA QUERIES ================= */
+
+/* ---------------- SMALL DEVICES (up to 480px) ---------------- */
+@media (max-width: 480px) {
+    /* Top Section & Header */
+    .top-section {
+        padding: 15px 15px;
+    }
+
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .left-part img {
+        width: 70px;
+        height: 70px;
+        margin-bottom: -15px;
+    }
+
+    .left-part h2 {
+        font-size: 18px;
+    }
+
+    /* Search Box */
+    .search-box {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    .search-box input {
+        padding: 12px 40px 12px 12px;
+        font-size: 16px;
+    }
+
+    /* Right Part */
+    .right-part {
+        margin-top: 10px;
+        gap: 12px;
+        font-size: 18px;
+    }
+
+    .register-btn {
+        padding: 10px 18px;
+        font-size: 16px;
+    }
+
+    /* Navbar */
+    nav {
+        flex-direction: column;
+        gap: 10px;
+        margin-right: 0;
+        padding-top: 10px;
+    }
+
+    nav a {
+        font-size: 16px;
+    }
+
+    /* Form */
+    .form-container {
+        width: 95%;
+        padding: 25px 15px;
+    }
+
+    .form-container h2 {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+
+    input, select {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    button {
+        font-size: 14px;
+        padding: 12px;
+    }
+
+    /* Footer */
+    footer {
+        padding: 40px 15px;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+
+    .footer-logo img {
+        width: 120px;
+        margin-top: -20px;
+    }
+
+    .footer-logo h2 {
+        font-size: 22px;
+    }
+
+    .footer-title {
+        font-size: 18px;
+        margin-top: 0;
+    }
+
+    .footer-links a {
+        font-size: 14px;
+    }
+
+    .col h4 {
+        font-size: 18px;
+    }
+
+    .col p {
+        font-size: 12px;
+    }
+
+    .footer-social {
+        font-size: 24px;
+        justify-content: center;
+    }
+
+    .footer-social i {
+        width: 35px;
+        height: 35px;
+        margin-left: 15px;
+    }
+}
+
+/* ---------------- MEDIUM DEVICES (Tablet: 481px – 768px) ---------------- */
+@media (min-width: 481px) and (max-width: 768px) {
+    /* Top Section & Header */
+    .top-section {
+        padding: 20px 25px;
+    }
+
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .left-part img {
+        width: 90px;
+        height: 90px;
+        margin-bottom: -25px;
+    }
+
+    .left-part h2 {
+        font-size: 20px;
+    }
+
+    /* Search Box */
+    .search-box {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    .search-box input {
+        padding: 14px 40px 14px 12px;
+        font-size: 16px;
+    }
+
+    /* Right Part */
+    .right-part {
+        margin-top: 10px;
+        gap: 15px;
+        font-size: 20px;
+    }
+
+    .register-btn {
+        padding: 12px 22px;
+        font-size: 16px;
+    }
+
+    /* Navbar */
+    nav {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        gap: 15px;
+        margin-right: 0;
+    }
+
+    nav a {
+        font-size: 18px;
+    }
+
+    /* Form */
+    .form-container {
+        width: 90%;
+        padding: 30px 20px;
+    }
+
+    .form-container h2 {
+        font-size: 22px;
+    }
+
+    input, select {
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    button {
+        font-size: 15px;
+        padding: 13px;
+    }
+
+    /* Footer */
+    footer {
+        padding: 50px 25px;
+    }
+
+    .footer-content {
+        grid-template-columns: 1.5fr 1fr 1fr 1fr;
+        gap: 30px;
+    }
+
+    .footer-logo img {
+        width: 140px;
+    }
+
+    .footer-logo h2 {
+        font-size: 24px;
+    }
+
+    .footer-title {
+        font-size: 20px;
+    }
+
+    .footer-links a {
+        font-size: 16px;
+    }
+
+    .col h4 {
+        font-size: 20px;
+    }
+
+    .col p {
+        font-size: 13px;
+    }
+}
+
+/* ---------------- LARGE DEVICES (Laptops: 769px – 1024px) ---------------- */
+@media (min-width: 769px) and (max-width: 1024px) {
+    /* Top Section & Header */
+    .top-section {
+        padding: 20px 35px;
+    }
+
+    .left-part img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .left-part h2 {
+        font-size: 22px;
+    }
+
+    /* Search Box */
+    .search-box {
+        width: 500px;
+        margin-left: 20px;
+    }
+
+    /* Right Part */
+    .right-part {
+        gap: 20px;
+    }
+
+    /* Navbar */
+    nav {
+        gap: 25px;
+        margin-right: 30px;
+    }
+
+    nav a {
+        font-size: 18px;
+    }
+
+    /* Form */
+    .form-container {
+        width: 400px;
+        padding: 35px;
+    }
+
+    .form-container h2 {
+        font-size: 24px;
+    }
+
+    /* Footer */
+    footer {
+        padding: 60px 35px;
+    }
+
+    .footer-content {
+        grid-template-columns: 1.3fr 1fr 1fr 1fr 1fr;
+        gap: 40px;
+    }
+
+    .footer-logo img {
+        width: 160px;
+    }
+
+    .footer-logo h2 {
+        font-size: 26px;
+    }
+
+    .footer-title {
+        font-size: 22px;
+    }
+
+    .footer-links a {
+        font-size: 18px;
+    }
+
+    .col h4 {
+        font-size: 22px;
+    }
+
+    .col p {
+        font-size: 14px;
+    }
+}
+
+
+    </style>
+</head>
+<body>
+      <div class="top-section">
+
+    <!-- HEADER -->
+    <header>
+
+        <!-- Left -->
+        <div class="left-part">
+            <img src="logo.PNG" alt="Logo">
+        </div>
+
+        <!-- Search -->
+        <div class="search-box">
+            <input type="text" placeholder="Search For">
+            <i class="fa fa-search"></i>
+        </div>
+
+        <!-- Right -->
+        <div class="right-part">
+            <i class="fa fa-shopping-cart"></i>
+            <i class="fa fa-bell"></i>
+            <button class="register-btn">Register</button>
+        </div>
+
+    </header>
+
+    <!-- NAV BAR -->
+     <nav>
+           <a href="home.html">Home</a>
+            <a href="About.html">About Us</a>
+            <a href="product.html">Product</a>
+            <a href="services.html">Service</a>
+            <a href="#contact">Contact</a>
+            <a href="blogs.html">Blogs</a>
+        </nav>
+
+</div>
+    <main>
+        <div class="form-container">
+            <h2>Create Account</h2>
+            <div class="form-group">
+                <label for="fullname">Full Name</label>
+                <input type="text" id="fullname" placeholder="Enter your full name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Create a password" required>
+            </div>
+            <div class="form-group">
+                <label for="confirm-password">Confirm Password</label>
+                <input type="password" id="confirm-password" placeholder="Confirm your password" required>
+            </div>
+            <div class="form-group">
+                <label for="country">Country</label>
+                <select id="country" required>
+                    <option value="">Select your country</option>
+                    <option value="us">United States</option>
+                    <option value="uk">United Kingdom</option>
+                    <option value="in">India</option>
+                    <option value="ca">Canada</option>
+                    <option value="au">Australia</option>
+                </select>
+            </div>
+            <div class="checkbox-group">
+                <input type="checkbox" id="terms" required>
+                <label for="terms">I agree to the Terms and Conditions</label>
+            </div>
+           <form action="login.html" method="get">
+    <button type="submit">Login</button>
+</form>
+
+            <div class="login-link">
+                Already have an account? <a href="">Login here</a>
+            </div>
+        </div>
+    </main>
+
+     <footer>
+    <div class="footer-content">
+        <!-- Logo Column -->
+        <div class="footer-logo">
+            <img src="footer logo.PNG" alt="Logo">
+            <h2>Tech Company</h2>
+        </div>
+
+        <!-- Company -->
+        <div>
+            <h3 class="footer-title">Company</h3>
+            <div class="footer-links">
+                <a href="#">About US</a>
+                <a href="#">Services</a>
+                <a href="#">Community</a>
+                <a href="#">Testimonial</a>
+            </div>
+        </div>
+
+        <!-- Support -->
+        <div>
+            <h3 class="footer-title">Support</h3>
+            <div class="footer-links">
+                <a href="#">Help Center</a>
+                <a href="#">Webians</a>
+                <a href="#">Feedback</a>
+            </div>
+        </div>
+
+        <!-- Links -->
+        <div>
+            <h3 class="footer-title">Links</h3>
+            <div class="footer-links">
+                <a href="#">Course</a>
+                <a href="#">Service</a>
+                <a href="#">All in ond</a>
+            </div>
+        </div>
+
+        <!-- Contact -->
+        <div class="col">
+            <h4>Contact US</h4>
+            <p><i class="fa-solid fa-phone"></i> +917788978934</p>
+            <p><i class="fa-solid fa-envelope"></i> nazer2000@gmail</p>
+        </div>
+    </div>
+
+    <!-- SOCIAL ICONS - Now properly positioned -->
+    <div class="footer-social">
+        <i class="fa-brands fa-google"></i>
+        <i class="fa-brands fa-twitter"></i>
+        <i class="fa-brands fa-linkedin"></i>
+        <i class="fa-brands fa-facebook"></i>
+    </div>
+</footer>
+</body>
+</html>
